@@ -1,0 +1,63 @@
+doctype html
+html
+    head
+        meta(charset='UTF-8')
+        title Registration
+        style.
+            body {
+                font-family: Arial, sans-serif;
+                font-size: 16px;
+                line-height: 1.5;
+                color: #100F11;
+            }
+            .container {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+            .logo {
+                width: 100px;
+                height: 100px;
+                display: block;
+                margin: 30px auto;
+            }
+            .title {
+                font-size: 24px;
+                font-weight: bold;
+                margin-bottom: 20px;
+            }
+            .subtitle {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+            .password {
+                font-size: 32px;
+                font-weight: bold;
+                color: #FF5C00;
+                margin-bottom: 20px;
+            }
+            .info {
+                font-size: 16px;
+                margin-bottom: 30px;
+            }
+            .footer {
+                font-size: 12px;
+                margin-top: 30px;
+                border-top: 1px solid #100F11;
+                padding-top: 20px;
+                text-align: center;
+            }
+            .skillSwap {
+                color: #FF5C00;
+                font-weight: bold;
+            }
+    body
+        .container
+            img.logo(src='images/greenCoin.png', alt='Logo', title='Logo')
+            h1.title Confirm Your Email Address
+            p.subtitle Please use the following code to finish your registration:
+            p.password #{code}
+            p.info Thank you for choosing Skill Swap Platform.
+            p.footer
+                | This email was sent by
+                span.skillSwap skillSwap
+                | . &copy; 2023 skillSwap, Inc.
