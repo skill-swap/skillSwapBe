@@ -31,7 +31,6 @@ export class AuthService {
 
   public async register(requestBody: AuthRegisterPostDto): Promise<void> {
     const { userName, password, email, code } = requestBody;
-    console.log(userName, password, email, code)
 
     const storedConfirmationCode = this.confirmationRegisterCodes.get(email);
     const dateNow = new Date();
@@ -59,9 +58,7 @@ export class AuthService {
     }
   }
 
-  async sendConfirmationRegisterCode({
-                                       email,
-                                     }: AuthConfirmEmailPostDto): Promise<void> {
+  async sendConfirmationRegisterCode({ email }: AuthConfirmEmailPostDto): Promise<void> {
     this.removeExpiredConfirmTokens();
     const userInDataBase = await this.userHelperService.findUserByEmail({
       email,
@@ -83,14 +80,12 @@ export class AuthService {
     };
 
     try {
-      const mail = await this.mailingService.sendConfirmRegistrationMail(
+      await this.mailingService.sendConfirmRegistrationMail(
         email,
         confirmationCode.code,
       );
-      console.log(mail, 'mail')
 
       this.confirmationRegisterCodes.set(email, confirmationCode);
-      console.log(this.confirmationRegisterCodes.values(), 'codes')
     } catch (error) {
       throw new ConflictException(error);
     }
@@ -125,9 +120,5 @@ export class AuthService {
         algorithm: 'HS256',
       },
     );
-  }
-
-  public generateSecret2FaKey() {
-    return speakeasy.generateSecret({ length: 32 }).base32;
   }
 }
