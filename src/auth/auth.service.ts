@@ -4,7 +4,6 @@ import { User, UsersDocument } from '../user/model/user.model';
 import { Model } from 'mongoose';
 import { IConfirmationRegisterCode } from '../core/interfaces/auth.model';
 import * as bcrypt from 'bcrypt';
-import * as speakeasy from 'speakeasy'
 import { JwtService } from '@nestjs/jwt';
 import { randomBytes } from 'crypto';
 import { Response } from 'express';
